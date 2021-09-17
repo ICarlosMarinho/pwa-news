@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;1,300&family=Palanquin:wght@100;300;400&family=Prompt:wght@200;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <title>PWA News</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script>
-      if ("serviceWorker" in navigator) {
-        this.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("./serviceWorker.js", { useCache: true })
-            .then((registration) => {
-              console.log("Registro realizado", registration.scope);
-            })
-            .catch(console.log);
-        });
-      }
-    </script>
+    <div id="app-root"></div>
   </body>
 </html>
