@@ -9,7 +9,7 @@ export const HomeContainer = styled.div`
     "news-list";
   grid-template-rows: repeat(2, 40px) place-content auto;
   grid-template-columns: 100%;
-  row-gap: 20px;
+  row-gap: 50px;
 `;
 
 export const Title = styled.h2`

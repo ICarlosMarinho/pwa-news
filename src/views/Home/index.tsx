@@ -4,6 +4,7 @@ import AppContext from "../../hooks/AppContext";
 import { getHeadlines } from "../../services";
 import { HomeContainer, Title } from "./index.style";
 import ArticleCard from "../../components/ArticleCard";
+import ArticleList from "../../components/ArticleList";
 
 const Home: FC = () => {
   const { articles, setArticles, setLoading, setFetchError } =
@@ -21,15 +22,11 @@ const Home: FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const renderHeadline = () =>
-    articles.length ? (
-      <ArticleCard headline={true} article={articles[0]} />
-    ) : null;
-
   return (
     <HomeContainer>
       <Title>Notícias do dia</Title>
-      {renderHeadline()}
+      <ArticleCard headline={true} article={articles[0] ?? null} />
+      <ArticleList articles={articles.slice(1)} />
     </HomeContainer>
   );
 };

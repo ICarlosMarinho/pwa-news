@@ -14,11 +14,11 @@ const ResetStyles = createGlobalStyle`
     padding: 0 40px;
   }
   
-  h2 {
+  h2, h3 {
     font-family: 'Prompt', 'Gill Sans', 'Gill Sans MT', sans-serif;
   }
 
-  h3 {
+  h4 {
     font-family: 'Cormorant', serif;
   }
 `;
