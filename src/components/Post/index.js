@@ -2,6 +2,7 @@ import { memo, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getNews } from "../../services/index";
+import ShareButton from "../ShareButton";
 
 const Post = () => {
   const { subject, id } = useParams();
@@ -31,6 +32,7 @@ const Post = () => {
         )}
       </strong>
       <strong>{provider.name}</strong>
+      <ShareButton post={post} subject={subject} />
     </article>
   );
   return post ? renderPost(post) : null;
