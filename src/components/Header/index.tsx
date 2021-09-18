@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 
 import { debounce } from "../../utils";
 import Navbar from "../Navbar";
+import SearchBar from "../SearchBar";
 
 import { HeaderContainer, Logo } from "./style";
 
@@ -19,6 +20,7 @@ const Header: FC = () => {
   return (
     <HeaderContainer scroll={scroll}>
       <Logo>PWA News</Logo>
+      <SearchBar scroll={scroll} />
       <Navbar
         scroll={scroll}
         items={[

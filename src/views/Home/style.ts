@@ -7,7 +7,7 @@ export const HomeContainer = styled.div`
     "page-title"
     "headline"
     "news-list";
-  grid-template-rows: repeat(2, 40px) fit-content auto;
+  grid-template-rows: 80px repeat(fit-content, 2) auto;
   grid-template-columns: 100%;
   row-gap: 50px;
 `;
