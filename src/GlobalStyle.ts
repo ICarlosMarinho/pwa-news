@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const ResetStyles = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
@@ -20,6 +20,17 @@ const ResetStyles = createGlobalStyle`
   h4 {
     font-family: 'Cormorant', serif;
   }
+
+  #app-root {
+    display: grid;
+    grid-template-areas:
+    "header"
+    "content"
+    "footer";
+    grid-template-rows: 60px fit-content 40px;
+    grid-template-columns: 100%;
+    gap: 30px;
+  }
 `;
 
-export default ResetStyles;
+export default GlobalStyle;

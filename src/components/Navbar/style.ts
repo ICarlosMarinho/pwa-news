@@ -19,9 +19,18 @@ const animation = keyframes`
   }
 `;
 
-export const ItemContainer = styled.div`
+interface Props {
+  scroll: number;
+}
+
+export const Item = styled(Link)<Props>`
+  color: ${(props) => (props.scroll > 0 ? "#fff" : props.theme.colors.text)};
+  outline: none;
+  text-decoration: none;
+
   position: relative;
-  &:hover {
+  &:hover,
+  &:focus {
     &::after {
       content: "";
       animation: ${animation} 0.3s cubic-bezier(0.7, 0.1, 0.9, 0.4) 1;
@@ -33,13 +42,4 @@ export const ItemContainer = styled.div`
       left: 0;
     }
   }
-`;
-
-interface Props {
-  scroll: number;
-}
-
-export const Item = styled(Link)<Props>`
-  color: ${(props) => (props.scroll > 0 ? "#fff" : props.theme.colors.text)};
-  text-decoration: none;
 `;

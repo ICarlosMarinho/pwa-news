@@ -13,7 +13,7 @@ const SearchBar: FC<Props> = ({ scroll }) => {
   const history = useHistory();
   const [searchStr, setSearchStr] = useState("");
   const [page, setPage] = useState(1);
-  const { articles, setFetchError, setArticles, setLoading } =
+  const { setFetchError, setSearchResults, setLoading } =
     useContext(AppContext);
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
@@ -23,8 +23,8 @@ const SearchBar: FC<Props> = ({ scroll }) => {
 
     getArticlesByKeyword(searchStr, page)
       .then((resData) => {
-        setArticles(resData.articles);
-        history.push(`/search/${searchStr}/${page}`);
+        setSearchResults(resData.articles);
+        history.push(`/${searchStr}`);
       })
       .catch((error) => {
         console.log(error);

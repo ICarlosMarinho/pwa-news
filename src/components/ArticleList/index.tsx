@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import ArticleCard from "../ArticleCard";
 
-import { ListContainer } from "./index.style";
+import { ListContainer } from "./style";
 
 interface Props {
   articles: Article[];
@@ -9,8 +9,8 @@ interface Props {
 
 const ArticleList: FC<Props> = ({ articles }) => {
   const renderList = () =>
-    articles.map((article, index) => (
-      <ArticleCard article={article} headline={false} key={index} />
+    articles.map((article) => (
+      <ArticleCard article={article} headline={false} key={article.id} />
     ));
 
   return articles.length ? <ListContainer>{renderList()}</ListContainer> : null;

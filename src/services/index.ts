@@ -1,15 +1,21 @@
 import axios from "axios";
-import { response } from "msw";
+import { v4 as uuidv4 } from "uuid";
 
 export const getHeadlines = (): Promise<ArticlesResponseData> => {
   return axios
-    .get(`${process.env.API_URL}/top-headlines`, {
+    .get<ArticlesResponseData>(`${process.env.API_URL}/top-headlines`, {
       params: {
         country: "br",
         apiKey: process.env.API_KEY,
       },
     })
-    .then((response) => response.data);
+    .then((response) => ({
+      ...response.data,
+      articles: response.data.articles.map((article) => {
+        article.id = uuidv4();
+        return article;
+      }),
+    }));
 };
 
 export const getArticlesByKeyword = (
@@ -17,7 +23,7 @@ export const getArticlesByKeyword = (
   page: number = 1
 ): Promise<ArticlesResponseData> => {
   return axios
-    .get(`${process.env.API_URL}/everything`, {
+    .get<ArticlesResponseData>(`${process.env.API_URL}/everything`, {
       params: {
         q: keyword,
         language: "pt",
@@ -27,5 +33,11 @@ export const getArticlesByKeyword = (
         page: page,
       },
     })
-    .then((response) => response.data);
+    .then((response) => ({
+      ...response.data,
+      articles: response.data.articles.map((article) => {
+        article.id = uuidv4();
+        return article;
+      }),
+    }));
 };

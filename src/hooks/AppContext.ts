@@ -5,8 +5,10 @@ const AppContext = createContext<AppState>({
   setLoading: (loading: boolean) => null,
   fetchError: false,
   setFetchError: (fetchError: boolean) => null,
-  articles: new Array<Article>(),
-  setArticles: (articles: Article[]) => null,
+  headlines: new Array<Article>(),
+  setHeadlines: (articles: Article[]) => null,
+  searchResults: new Array<Article>(),
+  setSearchResults: (articles: Article[]) => null,
 });
 
 export default AppContext;

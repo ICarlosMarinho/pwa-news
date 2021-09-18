@@ -33,9 +33,14 @@ export const Button = styled.button<Props>`
   outline: none;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   background-color: transparent;
   &:hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: 2px solid ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -45,5 +50,3 @@ export const Glass = styled.svg<Props>`
   stroke-width: 5px;
   stroke-opacity: 1;
 `;
-
-//style="fill:none;fill-opacity:1;stroke:#2d2d2d;stroke-width:5.29166651;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"

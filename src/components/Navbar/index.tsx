@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { NavbarContainer, Item, ItemContainer } from "./style";
+import { NavbarContainer, Item } from "./style";
 
 interface Props {
   items: Array<{ name: string; to: string }>;
@@ -10,11 +10,9 @@ interface Props {
 const Navbar: FC<Props> = ({ items, scroll }) => {
   const renderItems = () =>
     items.map((item, index) => (
-      <ItemContainer key={index}>
-        <Item to={item.to} scroll={scroll}>
-          {item.name}
-        </Item>
-      </ItemContainer>
+      <Item to={item.to} scroll={scroll} key={index}>
+        {item.name}
+      </Item>
     ));
 
   return <NavbarContainer>{items ? renderItems() : null}</NavbarContainer>;

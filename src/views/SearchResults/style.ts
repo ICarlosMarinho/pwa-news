@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const HomeContainer = styled.div`
-  display: flex;
+export const ResultsContainer = styled.main`
   grid-area: content;
+  display: flex;
   flex-direction: column;
   gap: 40px;
 `;
 
 export const Title = styled.h2`
-  font-size: 5em;
   color: ${(props) => props.theme.colors.title};
+  font-size: 3em;
   padding: 0 20px;
 `;

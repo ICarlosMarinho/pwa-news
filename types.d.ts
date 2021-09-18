@@ -1,4 +1,5 @@
 interface Article {
+  id?: string;
   author: string | null;
   content: string;
   description: string;
@@ -20,8 +21,10 @@ interface AppState {
   setLoading: (loading: boolean) => void;
   fetchError: boolean;
   setFetchError: (fetchError: boolean) => void;
-  articles: Article[];
-  setArticles: (articles: Article[]) => void;
+  headlines: Article[];
+  setHeadlines: (articles: Article[]) => void;
+  searchResults: Article[];
+  setSearchResults: (articles: Article[]) => void;
 }
 
 interface ThemeContext {
