@@ -1,21 +1,41 @@
-import { FC, useState, FormEvent } from "react";
+import { FC, useState, FormEvent, useContext } from "react";
+import { useHistory } from "react-router";
 
 import { Button, Input, SearchBarContainer, Glass } from "./style";
+import AppContext from "../../hooks/AppContext";
+import { getArticlesByKeyword } from "../../services";
 
 interface Props {
   scroll: number;
 }
 
 const SearchBar: FC<Props> = ({ scroll }) => {
+  const history = useHistory();
   const [searchStr, setSearchStr] = useState("");
+  const [page, setPage] = useState(1);
+  const { articles, setFetchError, setArticles, setLoading } =
+    useContext(AppContext);
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) =>
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
+
+    setLoading(true);
+
+    getArticlesByKeyword(searchStr, page)
+      .then((resData) => {
+        setArticles(resData.articles);
+        history.push(`/search/${searchStr}/${page}`);
+      })
+      .catch((error) => {
+        console.log(error);
+        setFetchError(true);
+      })
+      .finally(() => setLoading(false));
+  };
 
   return (
     <SearchBarContainer onSubmit={handleSubmit}>
       <Input
-        type="search"
         value={searchStr}
         onChange={(evt) => setSearchStr(evt.target.value)}
         placeholder="Ex. política"

@@ -9,7 +9,7 @@ interface Article {
   urlToImage: string;
 }
 
-interface HeadlinesResponseData {
+interface ArticlesResponseData {
   status: string;
   articles: Article[];
   totalResults: number;
