@@ -10,6 +10,7 @@ export const CardContainer = styled.article<Props>`
   gap: ${(props) => (props.headline ? "30px" : "10px")};
   grid-area: ${(props) => (props.headline ? "headline" : "")};
   width: ${(props) => (props.headline ? "default" : "20%")};
+  padding: ${(props) => (props.headline ? "0 20px" : "0")};
 `;
 
 export const Image = styled.img<Props>`

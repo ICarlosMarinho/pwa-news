@@ -7,7 +7,7 @@ import {
   Description,
   InfoContainer,
   Title,
-} from "./index.style";
+} from "./style";
 
 interface Props {
   article: Article;

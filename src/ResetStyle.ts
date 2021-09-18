@@ -11,7 +11,6 @@ const ResetStyles = createGlobalStyle`
     min-width: 100%;
     min-height: 100vh;
     font-family: 'Palanquin', sans-serif, Arial, Helvetica;
-    padding: 0 40px;
   }
   
   h2, h3 {

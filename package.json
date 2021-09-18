@@ -44,6 +44,7 @@
     "dotenv": "^10.0.0",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.2.0",
+    "msw": "^0.35.0",
     "ts-jest": "^27.0.5",
     "ts-loader": "^9.2.5",
     "webpack": "^5.53.0",
