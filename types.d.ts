@@ -1,3 +1,5 @@
+// import { Reducer } from "react";
+
 interface Article {
   id?: string;
   author: string | null;
@@ -17,14 +19,23 @@ interface ArticlesResponseData {
 }
 
 interface AppState {
+  scroll: number;
   loading: boolean;
-  setLoading: (loading: boolean) => void;
   fetchError: boolean;
-  setFetchError: (fetchError: boolean) => void;
-  headlines: Article[];
-  setHeadlines: (articles: Article[]) => void;
+  searchKey: string;
+  searchPage: number;
   searchResults: Article[];
-  setSearchResults: (articles: Article[]) => void;
+  headlines: Article[];
+}
+
+interface Action {
+  type: string;
+  payload: boolean | number | string | Article[];
+}
+
+interface Context {
+  state: AppState;
+  dispatch: any;
 }
 
 interface ThemeContext {

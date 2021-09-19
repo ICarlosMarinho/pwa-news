@@ -1,28 +1,20 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect } from "react";
+import AppContext from "../../state";
 
-import { debounce } from "../../utils";
 import Navbar from "../Navbar";
 import SearchBar from "../SearchBar";
 
 import { HeaderContainer, Logo } from "./style";
 
 const Header: FC = () => {
-  const [scroll, setScroll] = useState(0);
-
-  useEffect(() => {
-    const callback = debounce(() => setScroll(window.scrollY), 300);
-
-    document.addEventListener("scroll", callback);
-
-    return () => document.removeEventListener("scroll", callback);
-  }, []);
+  const { state } = useContext(AppContext) as Context;
 
   return (
-    <HeaderContainer scroll={scroll}>
+    <HeaderContainer scroll={state.scroll}>
       <Logo>PWA News</Logo>
-      <SearchBar scroll={scroll} />
+      <SearchBar scroll={state.scroll} />
       <Navbar
-        scroll={scroll}
+        scroll={state.scroll}
         items={[
           { name: "Início", to: "/" },
           { name: "Categorias", to: "/categorias" },

@@ -1,21 +1,40 @@
-import { FC } from "react";
+import { FC, useEffect, useReducer } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "./GlobalStyle";
 import Routes from "./routes";
-import AppContext from "./hooks/AppContext";
-import useInitialState from "./hooks/useInitialState";
 import theme from "./theme";
 import Header from "./components/Header";
+import reducer from "./state/reducer";
+import AppContext from "./state";
+import { debounce } from "./utils";
+import { setScroll } from "./state/actions";
 
 const App: FC = () => {
-  const initialState = useInitialState();
+  const intialState: AppState = {
+    scroll: 0,
+    loading: false,
+    fetchError: false,
+    searchKey: "",
+    searchPage: 1,
+    searchResults: new Array<Article>(),
+    headlines: new Array<Article>(),
+  };
+  const [state, dispatch] = useReducer(reducer, intialState);
+
+  useEffect(() => {
+    const callback = debounce(() => dispatch(setScroll(window.scrollY)), 300);
+
+    document.addEventListener("scroll", callback);
+
+    return () => document.removeEventListener("scroll", callback);
+  }, []);
 
   return (
     <Router>
       <GlobalStyle />
-      <AppContext.Provider value={initialState}>
+      <AppContext.Provider value={{ state, dispatch }}>
         <ThemeProvider theme={theme}>
           <Header />
           <Routes />
