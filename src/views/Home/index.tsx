@@ -5,21 +5,17 @@ import { getHeadlines } from "../../services";
 import { HomeContainer, Title } from "./style";
 import ArticleCard from "../../components/ArticleCard";
 import ArticleList from "../../components/ArticleList";
+import { setFetchError, setHeadlines, setLoading } from "../../state/actions";
 
 const Home: FC = () => {
-  const { state } = useContext(AppContext) as Context;
+  const { state, dispatch } = useContext(AppContext) as Context;
 
   useEffect(() => {
-    // if (!headlines.length) {
-    //   setLoading(true);
-    //   getHeadlines()
-    //     .then((resData) => setHeadlines(resData.articles))
-    //     .catch((error) => {
-    //       console.log(error);
-    //       setFetchError(true);
-    //     })
-    //     .finally(() => setLoading(false));
-    // }
+    dispatch(setLoading(true));
+    getHeadlines()
+      .then((resData) => dispatch(setHeadlines(resData.articles)))
+      .catch(() => dispatch(setFetchError(true)))
+      .finally(() => dispatch(setLoading(false)));
   }, []);
 
   return (

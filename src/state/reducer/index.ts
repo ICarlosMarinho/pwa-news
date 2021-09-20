@@ -8,10 +8,6 @@ const reducer = (state: AppState, action: Action): AppState => {
       return { ...state, loading: action.payload as boolean };
     case actionTypes.SET_FETCH_ERROR:
       return { ...state, fetchError: action.payload as boolean };
-    case actionTypes.SET_SEARCH_KEY:
-      return { ...state, searchKey: action.payload as string };
-    case actionTypes.SET_SEARCH_PAGE:
-      return { ...state, searchPage: action.payload as number };
     case actionTypes.SET_SEARCH_RESULTS:
       return {
         ...state,
@@ -20,6 +16,8 @@ const reducer = (state: AppState, action: Action): AppState => {
           ...(action.payload as Article[]),
         ],
       };
+    case actionTypes.CLEAR_SEARCH_RESULTS:
+      return { ...state, searchResults: action.payload };
     case actionTypes.SET_HEADLINES:
       return {
         ...state,

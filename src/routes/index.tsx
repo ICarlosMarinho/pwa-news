@@ -9,7 +9,7 @@ const Routes: FC = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/:keyword" component={SearchResults} />
+      <Route path="/search/:keyword" component={SearchResults} />
       <Route path="*" component={PageNotFound} />
     </Switch>
   );

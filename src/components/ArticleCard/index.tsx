@@ -3,10 +3,11 @@ import { FC, memo } from "react";
 import {
   CardContainer,
   PublishDate,
+  Author,
   Image,
   Description,
-  InfoContainer,
   Title,
+  ArticleLink,
 } from "./style";
 
 interface Props {
@@ -25,13 +26,18 @@ const ArticleCard: FC<Props> = ({ article, headline }) => {
           headline={headline}
           alt={`Imagem da notícia ${article.title}`}
         />
-        <InfoContainer>
-          <Title headline={headline}>{article.title}</Title>
-          <PublishDate>
-            {Intl.DateTimeFormat("pt-br", { timeZone: "UTC" }).format(date)}
-          </PublishDate>
-          <Description>{article.description}</Description>
-        </InfoContainer>
+        <Title headline={headline}>{article.title}</Title>
+        <PublishDate>
+          {Intl.DateTimeFormat("pt-br", { timeZone: "UTC" }).format(date)}
+        </PublishDate>
+        <Author>{article.author}</Author>
+        <Description>{article.description}</Description>
+        <ArticleLink
+          href={article.url}
+          target="_blank"
+          rel="noreferrer noopener">
+          Ler artigo
+        </ArticleLink>
       </CardContainer>
     );
   };

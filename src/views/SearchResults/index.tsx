@@ -1,46 +1,48 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 
 import { ResultsContainer, Title } from "./style";
 import AppContext from "../../state";
 import ArticleList from "../../components/ArticleList";
 import { getArticlesByKeyword } from "../../services";
-import axios from "axios";
-import { setSearchPage, setSearchResults } from "../../state/actions";
+import {
+  setFetchError,
+  setSearchResults,
+  setLoading,
+  clearSearchResults,
+} from "../../state/actions";
+import { useParams } from "react-router";
 
 const SearchResults: FC = () => {
+  const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
+  const { keyword } = useParams<{ keyword: string }>();
   const { state, dispatch } = useContext(AppContext) as Context;
 
+  const fetchResults = () => {
+    dispatch(setLoading(true));
+
+    getArticlesByKeyword(keyword, page)
+      .then((response) => {
+        dispatch(setSearchResults(response.articles));
+        setTotalResults(response.totalResults);
+      })
+      .catch(() => dispatch(setFetchError(true)))
+      .finally(() => dispatch(setLoading(false)));
+  };
+
   useEffect(() => {
-    if (state.scroll / document.body.clientHeight > 0.7) {
-      // getArticlesByKeyword("bitcoin", page)
-      //   .then((resData) => {
-      //     setSearchResults([...searchResults, ...resData.articles]);
+    dispatch(clearSearchResults());
+    fetchResults();
+  }, [keyword]);
 
-      //     setPage(page + 1);
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //     setFetchError(true);
-      //   })
-      //   .finally(() => setLoading(false));
+  useEffect(() => fetchResults(), [page]);
 
-      console.log(
-        ` ${state.scroll / document.body.clientHeight > 0.7} sending request...`
-      );
-
-      axios
-        .get(
-          `http://localhost:3002/articles?_page=${state.searchPage}_limit=10`
-        )
-        .then((response) => {
-          dispatch(setSearchResults(response.data));
-          dispatch(setSearchPage(state.searchPage + 1));
-        });
-    }
-
-    return () => {
-      dispatch(setSearchResults(new Array<Article>()));
-    };
+  useEffect(() => {
+    if (
+      state.scroll / document.body.clientHeight > 0.7 &&
+      state.searchResults.length < totalResults
+    )
+      setPage(page + 1);
   }, [state.scroll]);
 
   return (

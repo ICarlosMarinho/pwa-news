@@ -1,15 +1,7 @@
-import { FC, useState, FormEvent, useContext } from "react";
+import { FC, useState, FormEvent } from "react";
 import { useHistory } from "react-router";
 
 import { Button, Input, SearchBarContainer, Glass } from "./style";
-import AppContext from "../../state";
-import { getArticlesByKeyword } from "../../services";
-import axios from "axios";
-import {
-  setSearchKey,
-  setSearchPage,
-  setSearchResults,
-} from "../../state/actions";
 
 interface Props {
   scroll: number;
@@ -18,32 +10,11 @@ interface Props {
 const SearchBar: FC<Props> = ({ scroll }) => {
   const history = useHistory();
   const [searchStr, setSearchStr] = useState("");
-  const { state, dispatch } = useContext(AppContext) as Context;
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    // setLoading(true);
-
-    // getArticlesByKeyword(searchStr, page)
-    //   .then((resData) => {
-    //     setSearchResults(resData.articles);
-    //     history.push(`/${searchStr}`);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setFetchError(true);
-    //   })
-    //   .finally(() => setLoading(false));
-
-    axios
-      .get(`http://localhost:3002/articles?_page=${state.searchPage}_limit=10`)
-      .then((response) => {
-        dispatch(setSearchResults(response.data));
-        dispatch(setSearchPage(state.searchPage + 1));
-        dispatch(setSearchKey(searchStr));
-        history.push(`/${searchStr}`);
-      });
+    history.push(`/search/${searchStr}`);
   };
 
   return (

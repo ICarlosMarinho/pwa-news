@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    min-width: 100%;
+    width: 100%;
     min-height: 100vh;
     font-family: 'Palanquin', sans-serif, Arial, Helvetica;
   }
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     "header"
     "content"
     "footer";
-    grid-template-rows: 60px fit-content 40px;
+    grid-template-rows: 60px auto 40px;
     grid-template-columns: 100%;
     gap: 30px;
   }

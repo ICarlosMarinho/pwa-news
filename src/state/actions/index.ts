@@ -2,9 +2,8 @@ export const actionTypes = {
   SET_SCROLL: "SET_SCROLL",
   SET_LOADING: "SET_LOADING",
   SET_FETCH_ERROR: "SET_FETCH_ERROR",
-  SET_SEARCH_KEY: "SET_SEARCH_KEY",
-  SET_SEARCH_PAGE: "SET_SEARCH_PAGE",
   SET_SEARCH_RESULTS: "SET_SEARCH_RESULTS",
+  CLEAR_SEARCH_RESULTS: "CLEAR_SEARCH_RESULTS",
   SET_HEADLINES: "SET_HEADLINES",
 };
 
@@ -29,20 +28,6 @@ export const setFetchError = (fetchError: boolean): Action => {
   };
 };
 
-export const setSearchKey = (searchKey: string): Action => {
-  return {
-    type: actionTypes.SET_SEARCH_KEY,
-    payload: searchKey,
-  };
-};
-
-export const setSearchPage = (searchPage: number): Action => {
-  return {
-    type: actionTypes.SET_SEARCH_PAGE,
-    payload: searchPage,
-  };
-};
-
 export const setSearchResults = (articles: Article[]): Action => {
   return {
     type: actionTypes.SET_SEARCH_RESULTS,
@@ -54,5 +39,12 @@ export const setHeadlines = (articles: Article[]): Action => {
   return {
     type: actionTypes.SET_HEADLINES,
     payload: articles,
+  };
+};
+
+export const clearSearchResults = (): Action => {
+  return {
+    type: actionTypes.CLEAR_SEARCH_RESULTS,
+    payload: new Array<Article>(),
   };
 };

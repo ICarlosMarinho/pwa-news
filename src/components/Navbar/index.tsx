@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import { NavbarContainer, Item } from "./style";
 
@@ -18,4 +18,4 @@ const Navbar: FC<Props> = ({ items, scroll }) => {
   return <NavbarContainer>{items ? renderItems() : null}</NavbarContainer>;
 };
 
-export default Navbar;
+export default memo(Navbar);

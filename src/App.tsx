@@ -16,8 +16,6 @@ const App: FC = () => {
     scroll: 0,
     loading: false,
     fetchError: false,
-    searchKey: "",
-    searchPage: 1,
     searchResults: new Array<Article>(),
     headlines: new Array<Article>(),
   };

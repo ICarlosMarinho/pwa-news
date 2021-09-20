@@ -4,7 +4,8 @@ export const HomeContainer = styled.div`
   display: flex;
   grid-area: content;
   flex-direction: column;
-  gap: 40px;
+  gap: 60px;
+  width: 100%;
 `;
 
 export const Title = styled.h2`
