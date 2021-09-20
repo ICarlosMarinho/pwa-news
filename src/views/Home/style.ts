@@ -6,10 +6,10 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   gap: 60px;
   width: 100%;
+  padding: 0 20px;
 `;
 
 export const Title = styled.h2`
   font-size: 5em;
   color: ${(props) => props.theme.colors.title};
-  padding: 0 20px;
 `;

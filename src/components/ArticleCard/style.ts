@@ -8,29 +8,26 @@ export const CardContainer = styled.article<Props>`
   display: grid;
   grid-template-areas: ${(props) =>
     props.headline
-      ? `"image title title"
-    "image date author"
-    "image description description"
-    "image link link"`
-      : `"image image"
-    "title title"
-    "date author"
-    "description description"
-    "link link"`};
+      ? `"image title"
+    "image info"
+    "image description"
+    "image link"`
+      : `"image"
+    "title"
+    "info"
+    "description"
+    "link"`};
 
   grid-template-rows: ${(props) =>
-    props.headline
-      ? "repeat(4, auto)"
-      : "auto max-content auto max-content auto"};
+    props.headline ? "repeat(4, auto)" : "repeat(5, auto)"};
 
   grid-template-columns: ${(props) =>
-    props.headline ? "2fr repeat(2, 1fr)" : "repeat(2, 1fr)"};
+    props.headline ? "repeat(2, 1fr)" : "1fr"};
 
-  gap: ${(props) => (props.headline ? "30px" : "20px")};
+  gap: ${(props) => (props.headline ? "30px" : "10px")};
   grid-area: ${(props) => (props.headline ? "headline" : "")};
   width: ${(props) => (props.headline ? "100%" : "20%")};
-  max-width: ${(props) => (props.headline ? "100%" : "20%")};
-  padding: ${(props) => (props.headline ? "0 20px" : "0")};
+  height: min-content;
 `;
 
 export const Image = styled.img<Props>`
@@ -46,19 +43,20 @@ export const Title = styled.h3<Props>`
   text-align: justify;
 `;
 
-export const PublishDate = styled.p`
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  grid-area: info;
+`;
+
+export const Info = styled.span`
+  height: fit-content;
   color: ${(props) => props.theme.colors.subtitle};
-  grid-area: date;
-  text-align: left;
 `;
 
-export const Author = styled(PublishDate)`
-  grid-area: author;
-  justify-content: flex-end;
-  text-align: right;
-`;
-
-export const Description = styled(PublishDate)`
+export const Description = styled.p`
   font-weight: bold;
   grid-area: description;
   text-align: justify;

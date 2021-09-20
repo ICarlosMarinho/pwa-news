@@ -5,10 +5,10 @@ export const ResultsContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 40px;
+  padding: 0 20px;
 `;
 
 export const Title = styled.h2`
   color: ${(props) => props.theme.colors.title};
   font-size: 3em;
-  padding: 0 20px;
 `;

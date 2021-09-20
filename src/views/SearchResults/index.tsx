@@ -49,6 +49,10 @@ const SearchResults: FC = () => {
     <ResultsContainer>
       <Title>Resultados da pesquisa</Title>
       <ArticleList articles={state.searchResults} />
+      {state.loading ? <h1>Carregando artigos</h1> : null}
+      {state.fetchError ? (
+        <h1>Erro ao carregar artigos, tente novamente.</h1>
+      ) : null}
     </ResultsContainer>
   );
 };

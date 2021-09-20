@@ -23,6 +23,10 @@ const Home: FC = () => {
       <Title>Notícias do dia</Title>
       <ArticleCard headline={true} article={state.headlines[0] ?? null} />
       <ArticleList articles={state.headlines.slice(1)} />
+      {state.loading ? <h1>Carregando artigos</h1> : null}
+      {state.fetchError ? (
+        <h1>Erro ao carregar artigos, tente novamente.</h1>
+      ) : null}
     </HomeContainer>
   );
 };

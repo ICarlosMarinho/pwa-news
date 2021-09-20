@@ -5,5 +5,4 @@ export const ListContainer = styled.section`
   flex-wrap: wrap;
   gap: 50px;
   justify-content: stretch;
-  padding: 0 20px;
 `;
