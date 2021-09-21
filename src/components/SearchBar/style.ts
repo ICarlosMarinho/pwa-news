@@ -8,6 +8,7 @@ export const SearchBarContainer = styled.form`
 
   @media (max-width: 500px) {
     justify-content: center;
+    padding: 10px 0;
   }
 `;
 
