@@ -1,5 +1,13 @@
 import { FC } from "react";
 
-const PageNotFound: FC = () => <h2>PageNotFound is working!</h2>;
+import { Container } from "./style";
+
+const PageNotFound: FC = () => {
+  return (
+    <Container>
+      <h2>Página não encontrada.</h2>
+    </Container>
+  );
+};
 
 export default PageNotFound;

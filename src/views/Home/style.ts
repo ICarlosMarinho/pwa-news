@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-export const HomeContainer = styled.div`
+export const HomeContainer = styled.main`
   display: flex;
   grid-area: content;
   flex-direction: column;
   gap: 60px;
-  width: 100%;
   padding: 0 20px;
 
   @media (max-width: 500px) {

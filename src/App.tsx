@@ -10,6 +10,7 @@ import reducer from "./state/reducer";
 import AppContext from "./state";
 import { debounce } from "./utils";
 import { setScroll } from "./state/actions";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const App: FC = () => {
   const intialState: AppState = {
@@ -32,12 +33,14 @@ const App: FC = () => {
   return (
     <Router>
       <GlobalStyle />
-      <AppContext.Provider value={{ state, dispatch }}>
-        <ThemeProvider theme={theme}>
-          <Header />
-          <Routes />
-        </ThemeProvider>
-      </AppContext.Provider>
+      <ThemeProvider theme={theme}>
+        <ErrorBoundary>
+          <AppContext.Provider value={{ state, dispatch }}>
+            <Header />
+            <Routes />
+          </AppContext.Provider>
+        </ErrorBoundary>
+      </ThemeProvider>
     </Router>
   );
 };
