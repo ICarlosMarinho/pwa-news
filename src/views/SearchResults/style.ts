@@ -11,4 +11,9 @@ export const ResultsContainer = styled.main`
 export const Title = styled.h2`
   color: ${(props) => props.theme.colors.title};
   font-size: 3em;
+  padding: 20px 0;
+
+  @media (max-width: 500px) {
+    font-size: 1em;
+  }
 `;

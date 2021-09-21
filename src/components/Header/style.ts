@@ -17,6 +17,11 @@ export const HeaderContainer = styled.header<Props>`
     props.scroll > 0 ? `${props.theme.colors.text}FA` : "transparent"};
   transition: background-color 0.3s ease-in;
   padding: 0 20px;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    height: fit-content;
+  }
 `;
 
 export const LogoContainer = styled(Link)`

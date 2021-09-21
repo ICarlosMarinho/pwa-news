@@ -23,9 +23,9 @@ const Home: FC = () => {
       <Title>Notícias do dia</Title>
       <ArticleCard headline={true} article={state.headlines[0] ?? null} />
       <ArticleList articles={state.headlines.slice(1)} />
-      {state.loading ? <h1>Carregando artigos</h1> : null}
+      {state.loading ? <h2>Carregando</h2> : null}
       {state.fetchError ? (
-        <h1>Erro ao carregar artigos, tente novamente.</h1>
+        <h2>Erro ao carregar as notícias, tente novamente.</h2>
       ) : null}
     </HomeContainer>
   );

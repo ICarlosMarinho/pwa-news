@@ -3,8 +3,12 @@ import styled from "styled-components";
 export const SearchBarContainer = styled.form`
   display: flex;
   gap: 20px;
-  width: 25%;
   height: fit-content;
+  align-items: center;
+
+  @media (max-width: 500px) {
+    justify-content: center;
+  }
 `;
 
 interface Props {
@@ -32,7 +36,7 @@ export const Button = styled.button<Props>`
   border: none;
   outline: none;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   background-color: transparent;
   &:hover {

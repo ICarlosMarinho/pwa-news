@@ -28,6 +28,23 @@ export const CardContainer = styled.article<Props>`
   grid-area: ${(props) => (props.headline ? "headline" : "")};
   width: ${(props) => (props.headline ? "100%" : "20%")};
   height: min-content;
+
+  @media (max-width: 1023px) {
+    grid-template-areas:
+      "image"
+      "title"
+      "info"
+      "description"
+      "link";
+
+    grid-template-rows: repeat(5, auto);
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    gap: 10px;
+  }
 `;
 
 export const Image = styled.img<Props>`
@@ -41,6 +58,10 @@ export const Title = styled.h3<Props>`
   font-size: ${(props) => (props.headline ? "2em" : "1em")};
   grid-area: title;
   text-align: justify;
+
+  @media (max-width: 500px) {
+    font-size: 1em;
+  }
 `;
 
 export const InfoContainer = styled.div`
