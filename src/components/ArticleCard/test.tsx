@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import ArticleCard from ".";
-import { articleMockServer } from "../../mocks";
+import { articleMockServer } from "../../mocks/serverMock";
 import { getHeadlines } from "../../services";
 import theme from "../../theme";
 
@@ -23,12 +23,12 @@ describe("ArticleCard test suite", () => {
 
     renderComponent(article);
 
-    expect(screen.getByText("Test Author")).toBeInTheDocument();
+    expect(screen.getByText("Test Author 1")).toBeInTheDocument();
   });
 
   test("Article Card should not render elements", () => {
     renderComponent(null);
 
-    expect(screen.queryByText("Test Author")).not.toBeInTheDocument();
+    expect(screen.queryByText("Test Author 1")).not.toBeInTheDocument();
   });
 });

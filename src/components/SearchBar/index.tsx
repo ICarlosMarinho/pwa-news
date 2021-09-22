@@ -18,7 +18,7 @@ const SearchBar: FC<Props> = ({ scroll }) => {
   };
 
   return (
-    <SearchBarContainer onSubmit={handleSubmit}>
+    <SearchBarContainer role="form" onSubmit={handleSubmit}>
       <Input
         value={searchStr}
         onChange={(evt) => setSearchStr(evt.target.value)}

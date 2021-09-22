@@ -35,7 +35,9 @@ const SearchResults: FC = () => {
     fetchResults();
   }, [keyword]);
 
-  useEffect(() => fetchResults(), [page]);
+  useEffect(() => {
+    if (page > 1) fetchResults();
+  }, [page]);
 
   useEffect(() => {
     if (
