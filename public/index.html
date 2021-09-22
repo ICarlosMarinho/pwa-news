@@ -14,5 +14,15 @@
   </head>
   <body>
     <div id="app-root"></div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((reg) => console.log("SW registered"))
+            .catch((error) => console.log("SW Register error", error));
+        });
+      }
+    </script>
   </body>
 </html>
